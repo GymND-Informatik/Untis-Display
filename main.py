@@ -30,7 +30,7 @@ def parse_html(filename):
         if (text == "Text"): #information begins
           mode = True
           continue
-        if (mode == True):
+        if mode:
           if (" " in text and not ("-" in text)):  
             if current_class:
               tokens.append(current_class)
