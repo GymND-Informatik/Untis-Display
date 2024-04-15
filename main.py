@@ -46,7 +46,7 @@ def parse_html(filename):
     li = []
     for i in range(1, len(token)):
       li.append(token[i])
-      if (i ) % 5 == 0:
+      if i % 5 == 0:
         li.pop()
         el.append(li)
         li = []
