@@ -1,0 +1,64 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Table header and cell styling */
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Header row styling */
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Class for cells with no events */
+.leer {
+    background-color: #e9ecef;
+}
+
+/* Class for cells with substitution ("supplieren") */
+.supplieren {
+    background-color: #ffc107;
+    color: black;
+    font-weight: bold;
+}
+
+/* Class for cells where class is canceled ("ausfall") */
+.ausfall {
+    background-color: #dc3545;
+    color: white;
+    font-weight: bold;
+}
+
+/* Paragraph styling */
+p {
+    font-size: 24px;
+    color: #007BFF;
+    margin-top: 0;
+}
+
+/* Improve visual spacing and padding */
+table {
+    border-spacing: 0;
+}
+
+tr.list:hover {
+    background-color: #f8f9fa;
+}
