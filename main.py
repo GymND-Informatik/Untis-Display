@@ -131,7 +131,7 @@ def write_new_html(tokens, message):
       new_row.append(th_tag)
     
     soup.find("table").append(new_row)
-  return soup.prettify();
+  return soup.prettify()
 
 num = 1
 tokens = {}
