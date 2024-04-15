@@ -31,7 +31,7 @@ def parse_html(filename):
           mode = True
           continue
         if mode:
-          if (" " in text and not ("-" in text)):  
+          if " " in text and "-" not in text:
             if current_class:
               tokens.append(current_class)
             current_class = [text]
