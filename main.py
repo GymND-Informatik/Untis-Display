@@ -69,7 +69,6 @@ def write_new_html(tokens, message):
 
   soup.find("p").string = soup.find("p").get_text() + message
   
-  new_tokens = {}
   for key, value in tokens.items():
     new_row = soup.new_tag('tr', class_='list')
     
