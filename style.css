@@ -1,64 +1,92 @@
-/* General body styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+@font-face {
+    font-family: "badSchoolFontDIN1451W02Engschrift";
+    src: url("GymnasiumNeusiedl.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
 }
 
-/* Table styling */
+@font-face {
+    font-family: "DIN W02 Light";
+    src: url("GymnasiumFontLight.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --text-light: #07202c;
+    --background-light: #ffffff;
+    --primary-light: #86ad87;
+    --secondary-light: #9fc8a1;
+    --accent-light: #dddedf;
+    --eventBackground-light: #f3f3f4;
+
+    --text-dark: #d3ecf8;
+    --background-dark: #161718;
+    --primary-dark: #75cc82;
+    --secondary-dark: #568666;
+    --accent-dark: #383c3f;
+    --eventBackground-dark: #1d1e1f;
+}
+html {
+    -webkit-font-smoothing: antialiased;
+}
+body {
+    font-family: "DIN W02 Light", Arial, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: var(--background-light);
     margin-top: 20px;
 }
 
-/* Table header and cell styling */
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+th,
+td {
+    border: 1px solid var(--accent-light);
+    padding: 12px;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
+    background-color: var(--eventBackground-light);
 }
 
-/* Header row styling */
 th {
-    background-color: #007BFF;
-    color: white;
+    background-color: var(--primary-light);
+    color: var(--text-light);
+    font-size: 18px;
 }
 
-/* Class for cells with no events */
 .leer {
-    background-color: #e9ecef;
+    background-color: var(--secondary-light);
 }
 
-/* Class for cells with substitution ("supplieren") */
 .supplieren {
-    background-color: #ffc107;
-    color: black;
+    background-color: var(--primary-light);
+    color: var(--text-light);
     font-weight: bold;
 }
 
-/* Class for cells where class is canceled ("ausfall") */
 .ausfall {
-    background-color: #dc3545;
-    color: white;
+    background-color: var(--secondary-light);
+    color: var(--background-light);
     font-weight: bold;
 }
 
-/* Paragraph styling */
 p {
-    font-size: 24px;
-    color: #007BFF;
+    font-size: 18px;
+    color: var(--primary-light);
     margin-top: 0;
 }
 
-/* Improve visual spacing and padding */
 table {
     border-spacing: 0;
 }
 
-tr.list:hover {
-    background-color: #f8f9fa;
+tr:hover {
+    background-color: var(--accent-light);
 }
