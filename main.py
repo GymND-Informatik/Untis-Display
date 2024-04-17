@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 special_rooms = ["MUSIK", "BIOL"]
 
 def parse_html(filename):
-  with open(filename, 'r') as file:
+  with open(filename, 'r', encoding="iso-8859-1") as file:
     html_content = file.read()
 
   soup = BeautifulSoup(html_content, 'html.parser')
@@ -12,8 +12,11 @@ def parse_html(filename):
   message = ""
   if table_info:
     tr_elements = table_info.find_all('tr')
-    last_tr = tr_elements[-1]
-    message += last_tr.text.strip()
+    if (len(tr_elements) > 2):
+      last_tr = tr_elements[2]
+      message += last_tr.text.strip()
+    else:
+      message += "------"
   
   mode = False
   current_class = None
@@ -62,7 +65,7 @@ def write_new_html(tokens, message):
   
   new_row = soup.new_tag('tr', class_='list')
   for i in range(11):
-    th_tag = soup.new_tag('th', align='center')
+    th_tag = soup.new_tag('th')
     th_tag.string = str(i) if i != 0 else ' '
     new_row.append(th_tag)
   soup.find("table").append(new_row)
@@ -72,7 +75,7 @@ def write_new_html(tokens, message):
   for key, value in tokens.items():
     new_row = soup.new_tag('tr', class_='list')
     
-    th_tag = soup.new_tag('th', align='center')
+    th_tag = soup.new_tag('th')
     th_tag.string = key
     new_row.append(th_tag)
     
@@ -103,30 +106,38 @@ def write_new_html(tokens, message):
     value = new_value
 
     for i in range(10):
-      th_tag = soup.new_tag('td', align='center')
+      th_tag = soup.new_tag('td')
       th_tag.attrs["class"] = "leer"
       th_tag.string = " "
       for x in value:
         if str(i) in x[0]:
           if x[3] == "---":
-            th_tag.string = "AUSFALL"
-            th_tag.attrs["class"] = "ausfall"
-          else:
-            x1 = x[1].split("?")
-            teacher = x1[0]
-            if (len(x1) > 1):
-              teacher = x1[1]
             x2 = x[2].split("?")
             subject = x2[0]
             if (len(x2) > 1):
               subject = x2[1]
+            th_tag.string = subject + " " + "AUSFALL"
+            th_tag.attrs["class"] = "ausfall"
+          else:
+            text = ""
+            x1 = x[1].split("?")
+            teacher = x1[0]
+            if (len(x1) > 1):
+              teacher = x1[1]
+              text += teacher + " "
+            x2 = x[2].split("?")
+            subject = x2[0]
+            if (len(x2) > 1):
+              subject = x2[1]
+              text += subject + " "
             x3 = x[3].split("?")
             room = x3[0]
             if (len(x3) > 1):
               room = x3[1]
+              text += room
 
             th_tag.attrs["class"] = "supplieren"
-            th_tag.string = teacher + " " + subject + " " + room
+            th_tag.string = text
       new_row.append(th_tag)
     
     soup.find("table").append(new_row)
@@ -135,14 +146,17 @@ def write_new_html(tokens, message):
 num = 1
 tokens = {}
 message = ""
+# tokens, message = parse_html("subst_002.htm")
 while True:
   try:
-    filename = "subst_" + str(num).zfill(3) + ".html"
+    filename = "subst_" + str(num).zfill(3) + ".htm"
     tokens_, msg = parse_html(filename)
+    print("parsing", filename)
     if msg != "":
       message = msg
     for a, b in tokens_.items():
       tokens[a] = b
+
     num += 1
   except FileNotFoundError:
     break
