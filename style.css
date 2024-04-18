@@ -62,11 +62,11 @@ th {
 }
 
 .leer {
-    background-color: var(--secondary-light);
+    background-color: var(--background-light);
 }
 
 .supplieren {
-    background-color: var(--primary-light);
+    background-color: var(--secondary-light);
     color: var(--text-light);
     font-weight: bold;
 }
