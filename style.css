@@ -62,11 +62,11 @@ th {
 }
 
 .leer {
-    background-color: var(--secondary-light);
+    background-color: var(--background-light);
 }
 
 .supplieren {
-    background-color: var(--primary-light);
+    background-color: var(--secondary-light);
     color: var(--text-light);
     font-weight: bold;
 }
@@ -89,4 +89,27 @@ table {
 
 tr:hover {
     background-color: var(--accent-light);
+}
+
+
+#scroll-table {
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    display: block;
+    overflow-y: scroll;
+}
+
+#scroll-table::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+#scroll-table thead {
+    position: sticky;
+    top: 0;
+    background: white; /* or any other color */
+}
+
+#scroll-table tbody {
+
 }
