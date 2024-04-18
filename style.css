@@ -90,3 +90,26 @@ table {
 tr:hover {
     background-color: var(--accent-light);
 }
+
+
+#scroll-table {
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    display: block;
+    overflow-y: scroll;
+}
+
+#scroll-table::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+#scroll-table thead {
+    position: sticky;
+    top: 0;
+    background: white; /* or any other color */
+}
+
+#scroll-table tbody {
+
+}

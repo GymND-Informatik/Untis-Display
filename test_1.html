@@ -4,12 +4,24 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta content="0" http-equiv="expires" />
         <link href="style.css" rel="stylesheet" type="text/css" />
+
+        <!-- Include jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <!-- Include DataTables -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+        <!-- Include Scroller -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/scroller/2.0.3/css/scroller.dataTables.min.css">
+        <script src="https://cdn.datatables.net/scroller/2.0.3/js/dataTables.scroller.min.js"></script>
     </head>
     <body>
         <p>VWA-Präsentationen</p>
-        <div class="table-card">
-            <div class="scroll-content">
-        <table>
+        <div>
+            <table id="scroll-table">
+
+            <thead>
             <tr class_="list">
                 <th ></th>
                 <th >1</th>
@@ -23,6 +35,8 @@
                 <th>9</th>
                 <th>10</th>
             </tr>
+            </thead>
+            <tbody>
             <tr class_="list">
                 <th>1B 1B</th>
                 <th class="leer"></th>
@@ -205,8 +219,9 @@
                 <th align="center" class="leer"></th>
                 <th align="center" class="leer"></th>
             </tr>
+            </tbody>
         </table>
     </div>
-</div>
+        <script src="script.js"></script>
     </body>
 </html>
