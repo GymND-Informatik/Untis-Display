@@ -1,8 +1,10 @@
 from bs4 import BeautifulSoup
 from datetime import datetime, date
 
+
 def is_room(text):
   pass
+
 
 def parse_html(filename):
   with open(filename, 'r', encoding="iso-8859-1") as file:
@@ -140,15 +142,60 @@ def write_new_html(tokens, message):
             subject = x2[0]
             if (len(x2) > 1):
               subject = x2[1]
-            td_tag.string = subject + " " + "AUSFALL"
+            td_tag.string = x[1] + " " + x[2] + " " + "AUSFALL"
             td_tag.attrs["class"] = "ausfall"
           else:
             td_tag.attrs["class"] = "supplieren"
             supp_counter.append(i)
-            # add a whole new p element to the
-            p_tag = soup.new_tag("p", attrs={"class": "suppl_text"})
-            p_tag.string = x[1] + " " + x[2] + " " + x[3]
-            td_tag.append(p_tag)
+
+            div = soup.new_tag('div')
+            x1 = x[1].split("?")
+            if (len(x1) > 1):
+              p_tag = soup.new_tag("p", attrs={"class": "old"})
+              p_tag.append(soup.new_tag("s"))
+              p_tag.s.string = x1[0]
+              td_tag.append(p_tag)
+              p_tag2 = soup.new_tag("p", attrs={"class": "new"})
+              p_tag2.string = x1[1]
+              div.append(p_tag2)
+            else:
+              p_tag = soup.new_tag("p", attrs={"class": "new"})
+              p_tag.string = x1[0]
+              div.append(p_tag)
+            td_tag.append(div)
+
+            div = soup.new_tag('div')
+            x2 = x[2].split("?")
+            if (len(x2) > 1):
+              p_tag = soup.new_tag("p", attrs={"class": "old"})
+              p_tag.append(soup.new_tag("s"))
+              p_tag.s.string = x2[0]
+              td_tag.append(p_tag)
+              p_tag2 = soup.new_tag("p", attrs={"class": "new"})
+              p_tag2.string = x2[1]
+              div.append(p_tag2)
+            else:
+              p_tag = soup.new_tag("p", attrs={"class": "new"})
+              p_tag.string = x2[0]
+              div.append(p_tag)
+            td_tag.append(div)
+
+            div = soup.new_tag('div')
+            x3 = x[3].split("?")
+            if (len(x3) > 1):
+              p_tag = soup.new_tag("p", attrs={"class": "old"})
+              p_tag.append(soup.new_tag("s"))
+              p_tag.s.string = x3[0]
+              td_tag.append(p_tag)
+              p_tag2 = soup.new_tag("p", attrs={"class": "new"})
+              p_tag2.string = x3[1]
+              div.append(p_tag2)
+            else:
+              p_tag = soup.new_tag("p", attrs={"class": "new"})
+              p_tag.string = x3[0]
+              div.append(p_tag)
+            td_tag.append(div)
+            
 
       new_row.append(td_tag)
       if len(supp_counter):
