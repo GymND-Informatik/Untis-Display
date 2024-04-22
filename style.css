@@ -19,6 +19,8 @@
     --secondary-light: #9fc8a1;
     --accent-light: #dddedf;
     --eventBackground-light: #f3f3f4;
+    --cancel-light: #444c51;
+    --purple-light: #AC6DB9;
 
     --text-dark: #d3ecf8;
     --background-dark: #161718;
@@ -38,7 +40,14 @@ body {
     padding: 20px;
     line-height: 1.6;
 }
-
+#suppl_text {
+    font-family: "DIN W02 Light", Arial, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -72,14 +81,14 @@ th {
 }
 
 .ausfall {
-    background-color: var(--secondary-light);
+    background-color: var(--cancel-light);
     color: var(--background-light);
     font-weight: bold;
 }
 
 p {
     font-size: 18px;
-    color: var(--primary-light);
+    color: var(--text-light);
     margin-top: 0;
 }
 
