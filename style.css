@@ -15,7 +15,7 @@
 }
 
 :root {
-  --text-light: #07202c;
+  --text-light: #05171e;
   --background-light: #ffffff;
   --primary-light: rgba(52, 139, 65, 0.78);
   --secondary-light: #96c5a5;
@@ -88,12 +88,12 @@ th {
 
 .ausfall {
   background-color: var(--cancel-light);
-  color: var(--background-light);
+  color: var(--text-light);
   font-weight: bold;
 }
 
 .old {
-  color: var(--accent-light);
+  color: #aaa8ac;
 }
 
 .error {
