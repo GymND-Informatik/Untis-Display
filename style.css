@@ -17,12 +17,14 @@
 :root {
   --text-light: #07202c;
   --background-light: #ffffff;
-  --primary-light: #86ad87;
-  --secondary-light: #9fc8a1;
-  --accent-light: #dddedf;
-  --eventBackground-light: #f3f3f4;
-  --cancel-light: #444c51;
-  --purple-light: #AC6DB9;
+  --primary-light: rgba(52, 139, 65, 0.78);
+  --secondary-light: #96c5a5;
+  --table-head-light: #6a666a;
+  --accent-light: #e6e7e8;
+  --eventBackground-light: #e9e9eb;
+  --cancel-light: #b2b3b4;
+  --purple-light: #b580c2;
+  --untis-purple-light: #a182b2;
 
   --text-dark: #d3ecf8;
   --background-dark: #161718;
@@ -69,7 +71,7 @@ td {
 }
 
 th {
-  background-color: var(--primary-light);
+  background-color: var(--table-head-light);
   color: var(--text-light);
   font-size: 18px;
 }
@@ -79,7 +81,7 @@ th {
 }
 
 .supplieren {
-  background-color: var(--secondary-light);
+  background-color: var(--untis-purple-light);
   color: var(--text-light);
   font-weight: bold;
 }
