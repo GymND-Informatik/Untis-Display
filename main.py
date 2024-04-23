@@ -230,7 +230,7 @@ def write_new_html(tokens, message):
             subject = x[2].split("?")[0] if len(x[2].split("?")) > 1 else x[2]
             if subject in wpflf:
               if key in wpflf_list:
-                if not x in wpflf_list[key]:
+                if x not in wpflf_list[key]:
                   wpflf_list[key].append(x)
               else:
                 wpflf_list[key] = [x]
