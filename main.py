@@ -166,10 +166,10 @@ def display_extra(soup, list, name):
         div.append(format_text(soup, x[2]))
         div.append(format_text(soup, x[3]))
         td_tag.append(div)
-      
+
     new_row.append(td_tag)
     return new_row
-  
+
 
 def write_new_html(tokens, message):
   # error handling
@@ -249,7 +249,7 @@ def write_new_html(tokens, message):
               else:
                 reli_list[key] = [x]
               continue
-            
+
             supp_counter.append(i)
 
             # means the hour completely drops, give it its own class and handle accordingly
@@ -284,7 +284,7 @@ def write_new_html(tokens, message):
       # if there aren't any suppl hours at all, skip
       if len(supp_counter):
         tbody.append(new_row)
-  
+
   # reli extras
   reli_supp = display_extra(soup, reli_list, "RELI")
   if reli_supp:
@@ -303,7 +303,7 @@ def write_new_html(tokens, message):
   # append the whole table body to the table and the table to the div
   table.append(tbody)
   soup.find("div").append(table)
-  
+
   print(wpflf_list, uu_list, reli_list)
   return soup.prettify()
 
