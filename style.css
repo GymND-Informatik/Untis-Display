@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: "badSchoolFontDIN1451W02Engschrift";
   src: url("GymnasiumNeusiedl.woff") format("woff");
@@ -7,7 +8,8 @@
 
 @font-face {
   font-family: "DIN W02 Light";
-  src: url("GymnasiumFontLight.woff") format("woff");
+  src: url("GymnasiumFontLight.woff") format("woff"),
+  url("DINOffc-Light.ttf") format("truetype"); /* Add .ttf format */
   font-weight: normal;
   font-style: normal;
 }
@@ -33,7 +35,9 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 body {
-  font-family: "DIN W02 Light", Arial, sans-serif;
+  font-family: "DIN W02 Light", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-light);
   color: var(--text-light);
   margin: 0;
@@ -111,6 +115,7 @@ tr:hover {
 
 #scroll-table {
   height: 100vh;
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling in iOS */
   overflow: auto;
   scrollbar-width: none; /* Firefox */
   display: block;
