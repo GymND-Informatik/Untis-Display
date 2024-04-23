@@ -147,7 +147,6 @@ def simplify_range(input_string):
 
 def display_extra(soup, list, name):
   # rearrange extras
-  new_list = {}
   if len(list):
     new_row = soup.new_tag('tr')
     new_row.attrs["class"] = "extra"
