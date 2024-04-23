@@ -117,7 +117,6 @@ def parse_html(filename):
 
   return new_tokens, message
 
-
 def format_text(soup, x):
   div = soup.new_tag('div')
   x1 = x.split("?")
@@ -134,6 +133,44 @@ def format_text(soup, x):
     div.append(p_tag)
   return div
 
+def simplify_range(input_string):
+  input_string = input_string.strip("[").strip("]")
+  # Split the input string by comma and strip any whitespace
+  numbers = [int(num.strip()) for num in input_string.split(",")]
+
+  # Get the minimum and maximum numbers
+  min_num = min(numbers)
+  max_num = max(numbers)
+
+  # Return the simplified range string
+  return f"{min_num} - {max_num}"
+
+def display_extra(soup, list, name):
+  # rearrange extras
+  new_list = {}
+  if len(list):
+    new_row = soup.new_tag('tr')
+    new_row.attrs["class"] = "extra"
+    th_tag = soup.new_tag('th')
+    th_tag.string = name
+    new_row.append(th_tag)
+    td_tag = soup.new_tag('td')
+    td_tag.attrs["class"] = "leer"
+    td_tag.attrs["colspan"] = 9
+    for key, item in list.items():
+      for x in item:
+        div = soup.new_tag('div')
+        div2 = soup.new_tag('div')
+        div2.string = key + " (" + (simplify_range(x[0]) if "," in x[0] else x[0]) + ")"
+        div.append(div2)
+        div.append(format_text(soup, x[1]))
+        div.append(format_text(soup, x[2]))
+        div.append(format_text(soup, x[3]))
+        td_tag.append(div)
+      
+    new_row.append(td_tag)
+    return new_row
+  
 
 def write_new_html(tokens, message):
   # error handling
@@ -149,7 +186,7 @@ def write_new_html(tokens, message):
 
   # create the table header that will always display the hours 1 through 9
   thead = soup.new_tag("thead")
-  new_row = soup.new_tag('tr', class_='list')
+  new_row = soup.new_tag('tr')
   for i in range(10):
     th_tag = soup.new_tag('th')
     th_tag.string = str(i) if i != 0 else ''
@@ -170,7 +207,7 @@ def write_new_html(tokens, message):
 
   for key, value in tokens.items():
     # create a new row and add a header to it, the class name
-    new_row = soup.new_tag('tr', class_='list')
+    new_row = soup.new_tag('tr')
     th_tag = soup.new_tag('th')
     th_tag.string = key
     new_row.append(th_tag)
@@ -186,21 +223,34 @@ def write_new_html(tokens, message):
         td_tag.attrs["class"] = "leer"
         td_tag.string = ""
 
-        for x in value:
-          # check for special subjects
-          subject = x[2].split("?")[0] if len(x[2].split("?")) > 1 else x[2]
-          if subject in wpflf:
-            wpflf_list[key] = value
-            # continue
-          elif subject in uu:
-            uu_list[key] = value
-            # continue
-          elif subject in reli:
-            reli_list[key] = value
-            # continue
-
+        # check every suppl hour whether it fits into the current hour
+        for x in value:  
           # means the hour is in the array of hours that are suppld
           if str(i + 1) in x[0]:
+            # check for special subjects
+            subject = x[2].split("?")[0] if len(x[2].split("?")) > 1 else x[2]
+            if subject in wpflf:
+              if key in wpflf_list:
+                if not x in wpflf_list[key]:
+                  wpflf_list[key].append(x)
+              else:
+                wpflf_list[key] = [x]
+              continue
+            elif subject in uu:
+              if key in uu_list:
+                if not x in uu_list[key]:
+                  uu_list[key].append(x)
+              else:
+                uu_list[key] = [x]
+              continue
+            elif subject in reli:
+              if key in reli_list:
+                if not x in reli_list[key]:
+                  reli_list[key].append(x)
+              else:
+                reli_list[key] = [x]
+              continue
+            
             supp_counter.append(i)
 
             # means the hour completely drops, give it its own class and handle accordingly
@@ -232,18 +282,31 @@ def write_new_html(tokens, message):
         print("Error handling hour", i, "for class", key, "with error:", e)
         new_row.append(td_tag)
 
-      # if there aren't any suppl hours at all, or they are too much (like a school trip), skip the class entirely
+      # if there aren't any suppl hours at all, skip
       if len(supp_counter):
         tbody.append(new_row)
+  
+  # reli extras
+  reli_supp = display_extra(soup, reli_list, "RELI")
+  if reli_supp:
+    tbody.append(reli_supp)
+
+  # wpflf extras
+  wpflf_supp = display_extra(soup, wpflf_list, "WLPFF")
+  if wpflf_supp:
+    tbody.append(wpflf_supp)
+
+  # uu extras
+  uu_supp = display_extra(soup, uu_list, "UÜ")
+  if uu_supp:
+    tbody.append(uu_supp)
 
   # append the whole table body to the table and the table to the div
   table.append(tbody)
   soup.find("div").append(table)
-
+  
   print(wpflf_list, uu_list, reli_list)
-
   return soup.prettify()
-
 
 num = 1
 tokens = {}
