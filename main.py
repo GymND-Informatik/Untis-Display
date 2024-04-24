@@ -3,8 +3,6 @@ from datetime import datetime, date
 
 wpflf = open("wpflf.txt", "r").read().split("\n")
 uu = open("uu.txt", "r").read().split("\n")
-reli = open("reli.txt", "r").read().split("\n")
-
 
 def is_class(text):
   if len(text) <= 1:
@@ -13,7 +11,6 @@ def is_class(text):
     return True
   else:
     return False
-
 
 def rearrange_values(value):
   new_value = []
@@ -46,7 +43,6 @@ def rearrange_values(value):
 
   return new_value
 
-
 def parse_html(filename):
   with open(filename, 'r', encoding="iso-8859-1") as file:
     html_content = file.read()
@@ -58,7 +54,7 @@ def parse_html(filename):
   date_text = table_mon_title.get_text().split(" ")[0]
   if (datetime.strptime(date_text, "%d.%m.%Y").date() != date.today()):
     print("Date is not today, skipping tokens.")
-    # return
+    return
 
   # message of the day
   table_info = soup.find('table', class_='info')
@@ -166,10 +162,10 @@ def display_extra(soup, list, name):
         div.append(format_text(soup, x[2]))
         div.append(format_text(soup, x[3]))
         td_tag.append(div)
-      
+
     new_row.append(td_tag)
     return new_row
-  
+
 
 def write_new_html(tokens, message):
   # error handling
@@ -202,7 +198,6 @@ def write_new_html(tokens, message):
   # create the special subjects lists
   wpflf_list = {}
   uu_list = {}
-  reli_list = {}
 
   for key, value in tokens.items():
     # create a new row and add a header to it, the class name
@@ -242,14 +237,7 @@ def write_new_html(tokens, message):
               else:
                 uu_list[key] = [x]
               continue
-            elif subject in reli:
-              if key in reli_list:
-                if not x in reli_list[key]:
-                  reli_list[key].append(x)
-              else:
-                reli_list[key] = [x]
-              continue
-            
+
             supp_counter.append(i)
 
             # means the hour completely drops, give it its own class and handle accordingly
@@ -284,11 +272,6 @@ def write_new_html(tokens, message):
       # if there aren't any suppl hours at all, skip
       if len(supp_counter):
         tbody.append(new_row)
-  
-  # reli extras
-  reli_supp = display_extra(soup, reli_list, "RELI")
-  if reli_supp:
-    tbody.append(reli_supp)
 
   # wpflf extras
   wpflf_supp = display_extra(soup, wpflf_list, "WLPFF")
@@ -303,8 +286,8 @@ def write_new_html(tokens, message):
   # append the whole table body to the table and the table to the div
   table.append(tbody)
   soup.find("div").append(table)
-  
-  print(wpflf_list, uu_list, reli_list)
+
+  # print(wpflf_list, uu_list)
   return soup.prettify()
 
 num = 1
@@ -313,7 +296,7 @@ message = ""
 # tokens, message = parse_html("subst_002.htm")
 while True:
   filename = "subst_" + str(num).zfill(3) + ".htm"
-  print("parsing", filename)
+  # print("parsing", filename)
   try:
     tokens_, msg = parse_html(filename)
     if msg != "":
@@ -326,8 +309,8 @@ while True:
     print("Error parsing file", filename, "|", error_message)
     break
 
-print(tokens, message)
-print(wpflf, uu, reli)
+# print(tokens, message)
+# print(wpflf, uu)
 new_html = write_new_html(tokens, message)
-with open("new.html", "w") as file:
+with open("index.html", "w") as file:
   file.write(new_html)
