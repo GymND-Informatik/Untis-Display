@@ -3,17 +3,19 @@ from datetime import datetime, date
 
 wpflf = open("wpflf.txt", "r").read().split("\n")
 uu = open("uu.txt", "r").read().split("\n")
-reli = open("reli.txt", "r").read().split("\n")
-
+ignore = open("ignore.txt", "r").read().split("\n")
 
 def is_class(text):
   if len(text) <= 1:
     return False
   if text[0].isnumeric() and text[1].isalpha():
     return True
+  if text.find("Matura") != -1: # matura
+    return True
+  if text[:2] == "FS": # fremdschule
+    return True
   else:
     return False
-
 
 def rearrange_values(value):
   new_value = []
@@ -46,7 +48,6 @@ def rearrange_values(value):
 
   return new_value
 
-
 def parse_html(filename):
   with open(filename, 'r', encoding="iso-8859-1") as file:
     html_content = file.read()
@@ -56,9 +57,9 @@ def parse_html(filename):
   # date (don't care for now)
   table_mon_title = soup.find('div', class_='mon_title')
   date_text = table_mon_title.get_text().split(" ")[0]
-  if (datetime.strptime(date_text, "%d.%m.%Y").date() != date.today()):
+  if datetime.strptime(date_text, "%d.%m.%Y").date() != date(2024, 5, 7):
     print("Date is not today, skipping tokens.")
-    # return
+    return None, None
 
   # message of the day
   table_info = soup.find('table', class_='info')
@@ -160,16 +161,16 @@ def display_extra(soup, list, name):
       for x in item:
         div = soup.new_tag('div')
         div2 = soup.new_tag('div')
-        div2.string = key + " (" + (simplify_range(x[0]) if "," in x[0] else x[0]) + ")"
+        div2.string = key + " (Stunde " + (simplify_range(x[0]) if "," in x[0] else x[0]) + ")"
         div.append(div2)
         div.append(format_text(soup, x[1]))
         div.append(format_text(soup, x[2]))
         div.append(format_text(soup, x[3]))
         td_tag.append(div)
-      
+
     new_row.append(td_tag)
     return new_row
-  
+
 
 def write_new_html(tokens, message):
   # error handling
@@ -202,9 +203,12 @@ def write_new_html(tokens, message):
   # create the special subjects lists
   wpflf_list = {}
   uu_list = {}
-  reli_list = {}
 
   for key, value in tokens.items():
+    # ignore fs
+    if key[0] == "F" and key[1] == "S":
+      continue
+    
     # create a new row and add a header to it, the class name
     new_row = soup.new_tag('tr')
     th_tag = soup.new_tag('th')
@@ -223,7 +227,10 @@ def write_new_html(tokens, message):
         td_tag.string = ""
 
         # check every suppl hour whether it fits into the current hour
-        for x in value:  
+        for x in value: 
+          # ignore some things
+          if any(y in ignore for y in x) or key in ignore:
+            continue
           # means the hour is in the array of hours that are suppld
           if str(i + 1) in x[0]:
             # check for special subjects
@@ -237,19 +244,12 @@ def write_new_html(tokens, message):
               continue
             elif subject in uu:
               if key in uu_list:
-                if not x in uu_list[key]:
+                if x not in uu_list[key]:
                   uu_list[key].append(x)
               else:
                 uu_list[key] = [x]
               continue
-            elif subject in reli:
-              if key in reli_list:
-                if not x in reli_list[key]:
-                  reli_list[key].append(x)
-              else:
-                reli_list[key] = [x]
-              continue
-            
+          
             supp_counter.append(i)
 
             # means the hour completely drops, give it its own class and handle accordingly
@@ -266,9 +266,11 @@ def write_new_html(tokens, message):
             else:
               td_tag.attrs["class"] = "supplieren"
               # append new divs to the table data, each for every information, teacher, class, room
-              td_tag.append(format_text(soup, x[1]))
-              td_tag.append(format_text(soup, x[2]))
-              td_tag.append(format_text(soup, x[3]))
+              div = soup.new_tag('div')
+              div.append(format_text(soup, x[1]))
+              div.append(format_text(soup, x[2]))
+              div.append(format_text(soup, x[3]))
+              td_tag.append(div)
 
         # append the table data from above to the row
         new_row.append(td_tag)
@@ -284,11 +286,6 @@ def write_new_html(tokens, message):
       # if there aren't any suppl hours at all, skip
       if len(supp_counter):
         tbody.append(new_row)
-  
-  # reli extras
-  reli_supp = display_extra(soup, reli_list, "RELI")
-  if reli_supp:
-    tbody.append(reli_supp)
 
   # wpflf extras
   wpflf_supp = display_extra(soup, wpflf_list, "WLPFF")
@@ -296,6 +293,7 @@ def write_new_html(tokens, message):
     tbody.append(wpflf_supp)
 
   # uu extras
+  print(uu_list)
   uu_supp = display_extra(soup, uu_list, "UÜ")
   if uu_supp:
     tbody.append(uu_supp)
@@ -303,8 +301,8 @@ def write_new_html(tokens, message):
   # append the whole table body to the table and the table to the div
   table.append(tbody)
   soup.find("div").append(table)
-  
-  print(wpflf_list, uu_list, reli_list)
+
+  # print(wpflf_list, uu_list)
   return soup.prettify()
 
 num = 1
@@ -313,21 +311,22 @@ message = ""
 # tokens, message = parse_html("subst_002.htm")
 while True:
   filename = "subst_" + str(num).zfill(3) + ".htm"
-  print("parsing", filename)
+  # print("parsing", filename)
   try:
     tokens_, msg = parse_html(filename)
     if msg != "":
       message = msg
-    for a, b in tokens_.items():
-      tokens[a] = b
+    if tokens_:
+      for a, b in tokens_.items():
+        tokens[a] = b
     num += 1
   except Exception as e:
     error_message = f"Error Occurred: {str(e)}"
     print("Error parsing file", filename, "|", error_message)
     break
 
-print(tokens, message)
-print(wpflf, uu, reli)
+# print(tokens, message)
+# print(wpflf, uu)
 new_html = write_new_html(tokens, message)
-with open("new.html", "w") as file:
+with open("index.html", "w") as file:
   file.write(new_html)
