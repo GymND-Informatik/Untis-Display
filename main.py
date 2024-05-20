@@ -249,7 +249,6 @@ def write_new_html(tokens, message):
               else:
                 uu_list[key] = [x]
               continue
-          
             supp_counter.append(i)
 
             # means the hour completely drops, give it its own class and handle accordingly
@@ -286,7 +285,7 @@ def write_new_html(tokens, message):
       # if there aren't any suppl hours at all, skip
       if len(supp_counter):
         tbody.append(new_row)
-
+        
   # wpflf extras
   wpflf_supp = display_extra(soup, wpflf_list, "WLPFF")
   if wpflf_supp:
@@ -302,7 +301,6 @@ def write_new_html(tokens, message):
   table.append(tbody)
   soup.find("div").append(table)
 
-  # print(wpflf_list, uu_list)
   return soup.prettify()
 
 num = 1
