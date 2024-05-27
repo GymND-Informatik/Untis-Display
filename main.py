@@ -57,7 +57,7 @@ def parse_html(filename):
   # date (don't care for now)
   table_mon_title = soup.find('div', class_='mon_title')
   date_text = table_mon_title.get_text().split(" ")[0]
-  if datetime.strptime(date_text, "%d.%m.%Y").date() != date(2024, 5, 7):
+  if datetime.strptime(date_text, "%d.%m.%Y").date() != date.today():
     print("Date is not today, skipping tokens.")
     return None, None
 
