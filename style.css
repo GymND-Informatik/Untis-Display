@@ -215,12 +215,16 @@ td, th {
   padding: 10px; /* Add padding inside the container */
   border: 1px solid #ddd; /* Subtle border for the container */
   border-radius: 5px; /* Rounded corners for the container */
-  /* background-color: #f9f9f9; /* Light background color for the container */ */
+  /* background-color: #f9f9f9; /* Light background color for the container */
+  margin: 8px;
+  background-color: rgba(142, 186, 125, 0.27);
+  border: 1px solid rgba(142, 186, 125, 0.51);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .extra-item {
   padding: 10px; /* Consistent padding for each item */
-  margin-right: 20px; /* Space between items */
+  margin-right: 50px; /* Space between items */
 }
 
 .extra-item:last-child {
