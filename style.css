@@ -101,6 +101,7 @@ th {
   border: 1px solid rgba(142, 186, 125, 0.43);
   z-index: -10;
   padding: 20px;
+  padding-bottom: 5px;
   /*z-index: 2;*/
   /*background-color: #3c474a;*/
   font-size: 0.75rem;
@@ -194,6 +195,8 @@ td, th {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 15px;
+  /* border: 1px solid red; */
 }
 
 .supplieren-item {
@@ -206,17 +209,25 @@ td, th {
 
 .extra-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
+  padding: 10px; /* Add padding inside the container */
+  border: 1px solid #ddd; /* Subtle border for the container */
+  border-radius: 5px; /* Rounded corners for the container */
+  /* background-color: #f9f9f9; /* Light background color for the container */ */
 }
 
 .extra-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding-left: 10px;
-  padding-right: 20px;
-  margin-right: 60px;
+  padding: 10px; /* Consistent padding for each item */
+  margin-right: 20px; /* Space between items */
 }
 
+.extra-item:last-child {
+  margin-right: 0; /* Remove right margin for the last item */
+}
 
+/* Optional: Add a global box-sizing rule for consistent padding and border */
+* {
+  box-sizing: border-box;
+}
