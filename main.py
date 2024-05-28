@@ -57,7 +57,7 @@ def parse_html(filename):
   # date (don't care for now)
   table_mon_title = soup.find('div', class_='mon_title')
   date_text = table_mon_title.get_text().split(" ")[0]
-  if datetime.strptime(date_text, "%d.%m.%Y").date() != date.today():
+  if datetime.strptime(date_text, "%d.%m.%Y").date() != date(2024, 5, 7):
     print("Date is not today, skipping tokens.")
     return None, None
 
@@ -118,8 +118,11 @@ def parse_html(filename):
 
   return new_tokens, message
 
-def format_text(soup, x):
+def format_text(soup, x, extra=False):
   div = soup.new_tag('div')
+  div.attrs["class"] = "supplieren-item"
+  if extra:
+    div.attrs["class"] = "extra-item"
   x1 = x.split("?")
   if (len(x1) > 1):
     s_tag = soup.new_tag('s', attrs={"class": "old"})
@@ -160,12 +163,14 @@ def display_extra(soup, list, name):
     for key, item in list.items():
       for x in item:
         div = soup.new_tag('div')
+        div.attrs["class"] = "extra-container"
         div2 = soup.new_tag('div')
+        div2.attrs["class"] = "extra-item"
         div2.string = key + " (Stunde " + (simplify_range(x[0]) if "," in x[0] else x[0]) + ")"
         div.append(div2)
-        div.append(format_text(soup, x[1]))
-        div.append(format_text(soup, x[2]))
-        div.append(format_text(soup, x[3]))
+        div.append(format_text(soup, x[1], extra=True))
+        div.append(format_text(soup, x[2], extra=True))
+        div.append(format_text(soup, x[3], extra=True))
         td_tag.append(div)
 
     new_row.append(td_tag)
@@ -173,12 +178,6 @@ def display_extra(soup, list, name):
 
 
 def write_new_html(tokens, message):
-  # error handling
-  if len(tokens) == 0:
-    error_message = "<div><h1>Error Occurred in the parsing. Lmao bad luck.</h1><p>Go talk to Herr Proffesor Kaintz.</p><p>Yours truly, Jacques.</p></div>"
-    soup = BeautifulSoup(error_message, 'html.parser')
-    return soup.prettify()
-
   # open the html template and find the table
   file = open("template.html", 'r')
   soup = BeautifulSoup(file.read(), 'html.parser')
@@ -194,8 +193,13 @@ def write_new_html(tokens, message):
   thead.append(new_row)
   table.append(thead)
 
+  if not message:
+    message = "------"
   # enter the daily message up top
-  soup.find("p").string = soup.find("p").get_text() + message
+  soup.find("p").string = str(soup.find("p").get_text()) + str(date.today()) + " " + str(message)
+
+  if len(tokens) == 0:
+    soup.find("p").string = str(soup.find("p").get_text()) + " | Keine Supplierungen gefunden."
 
   # create the table body
   tbody = soup.new_tag("tbody")
@@ -208,7 +212,7 @@ def write_new_html(tokens, message):
     # ignore fs
     if key[0] == "F" and key[1] == "S":
       continue
-    
+
     # create a new row and add a header to it, the class name
     new_row = soup.new_tag('tr')
     th_tag = soup.new_tag('th')
@@ -249,6 +253,7 @@ def write_new_html(tokens, message):
               else:
                 uu_list[key] = [x]
               continue
+
             supp_counter.append(i)
 
             # means the hour completely drops, give it its own class and handle accordingly
@@ -266,6 +271,7 @@ def write_new_html(tokens, message):
               td_tag.attrs["class"] = "supplieren"
               # append new divs to the table data, each for every information, teacher, class, room
               div = soup.new_tag('div')
+              div.attrs["class"] = "supplieren-container"
               div.append(format_text(soup, x[1]))
               div.append(format_text(soup, x[2]))
               div.append(format_text(soup, x[3]))
@@ -285,7 +291,7 @@ def write_new_html(tokens, message):
       # if there aren't any suppl hours at all, skip
       if len(supp_counter):
         tbody.append(new_row)
-        
+
   # wpflf extras
   wpflf_supp = display_extra(soup, wpflf_list, "WLPFF")
   if wpflf_supp:
@@ -301,6 +307,7 @@ def write_new_html(tokens, message):
   table.append(tbody)
   soup.find("div").append(table)
 
+  # print(wpflf_list, uu_list)
   return soup.prettify()
 
 num = 1
@@ -325,6 +332,7 @@ while True:
 
 # print(tokens, message)
 # print(wpflf, uu)
+
 new_html = write_new_html(tokens, message)
 with open("index.html", "w") as file:
   file.write(new_html)
