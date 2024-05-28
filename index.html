@@ -1,764 +1,944 @@
-<!DOCTYPE html>
 <html>
-<head>
- <title>Untis 2024 Vertretungsplan</title>
- <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
- <meta content="0" http-equiv="expires" />
- <link href="style.css" rel="stylesheet" />
- <!-- Include jQuery -->
- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
- <!-- Include DataTables -->
- <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
- <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
- <!-- Include Scroller -->
- <link href="https://cdn.datatables.net/scroller/2.0.3/css/scroller.dataTables.min.css" rel="stylesheet" type="text/css" />
- <script src="https://cdn.datatables.net/scroller/2.0.3/js/dataTables.scroller.min.js"></script>
-</head>
-<body>
-<p>Nachricht des Tages: ------</p>
-<div class="main-container">
- <table id="scroll-table">
-  <thead>
-  <tr>
-   <th></th>
-   <th>1</th>
-   <th>2</th>
-   <th>3</th>
-   <th>4</th>
-   <th>5</th>
-   <th>6</th>
-   <th>7</th>
-   <th>8</th>
-   <th>9</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-   <th>2A 2A</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">WOM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">BSPM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">TM1</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>3AF 3AF</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">WOM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">NRA</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R1C</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>3AL 3AL</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">WOM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">NRA</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R1C</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>3B 3BF</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">LEI</s>
-      <p class="new">WEC</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">F3</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R3B</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">WOM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">NRA</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R1C</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>3D 3DR</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">WOM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">BSPM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">TM1</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>3E 3ER</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">WOM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">BSPM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">TM1</p>
-     </div>
-    </div>
-   </td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">WOM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">NRA</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R1C</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>3F 3FR</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">AMI</s>
-      <p class="new">TIM</p>
-     </div>
-     <div class="supplieren-item">
-      <s class="old">MU_4A</s>
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R3F</p>
-     </div>
-    </div>
-   </td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">WOM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">NRA</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R1C</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>4E 4ER</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">PAP</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">BSPM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">TM1</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>4F 4FR</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">PAP</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">BSPM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">TM1</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="ausfall">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MU_4A</s>
-      <s class="old">AMI</s>
-      <s class="old">9</s>
-     </div>
-    </div>
-   </td>
-  </tr>
-  <tr>
-   <th>5A 5AL</th>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">TIM</s>
-      <p class="new">SUB</p>
-     </div>
-     <div class="supplieren-item">
-      <s class="old">M</s>
-      <p class="new">L3</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R5A</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>5B 5BF</th>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">HEG</s>
-      <p class="new">WEC</p>
-     </div>
-     <div class="supplieren-item">
-      <s class="old">L5</s>
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R5B</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>5C 5CR</th>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">KRI</s>
-      <p class="new">POC</p>
-     </div>
-     <div class="supplieren-item">
-      <s class="old">M</s>
-      <p class="new">E</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R5C</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>6A 6AL</th>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">WMA</s>
-      <p class="new">SLI</p>
-     </div>
-     <div class="supplieren-item">
-      <s class="old">M</s>
-      <p class="new">BIOUB_3</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R6A</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>6B 6BF</th>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">GMG</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">BSPM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">TM1</p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">POM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">BSPK</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">TK1</p>
-     </div>
-    </div>
-   </td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">MAL</s>
-      <p class="new">GMG</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">BSPM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">TM1</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>7C 7CR</th>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <s class="old">SUB</s>
-      <p class="new">HUB</p>
-     </div>
-     <div class="supplieren-item">
-      <s class="old">L5</s>
-      <p class="new">D</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">R7C</p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>M_TM Matura</th>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">STO</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-   </td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">WEC</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">TJU</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr>
-   <th>M_TK Matura</th>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">KOR</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">TIM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-   </td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">TIM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">LAD</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">BRH</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-   </td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">TIM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">ILP</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">KAT</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-   </td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">KOR</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">RAM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">KNO</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-   </td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">KOR</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">ENE</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">TIP</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-   </td>
-   <td class="supplieren">
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">KOR</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">TIM</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-    <div class="supplieren-container">
-     <div class="supplieren-item">
-      <p class="new">KUS</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new">M</p>
-     </div>
-     <div class="supplieren-item">
-      <p class="new"></p>
-     </div>
-    </div>
-   </td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-   <td class="leer"></td>
-  </tr>
-  <tr class="extra">
-   <th>WLPFF</th>
-   <td class="leer" colspan="9">
-    <div class="extra-container">
-     <div class="extra-item">6D 6DR (Stunde 1)</div>
-     <div class="extra-item">
-      <s class="old">KOR</s>
-      <p class="new">MUM</p>
-     </div>
-     <div class="extra-item">
-      <s class="old">WPUP</s>
-      <p class="new">D</p>
-     </div>
-     <div class="extra-item">
-      <p class="new">R6D</p>
-     </div>
-    </div>
-   </td>
-  </tr>
-  </tbody>
- </table>
-</div>
-<script src="script.js"></script>
-</body>
+ <head>
+  <title>
+   Untis 2024 Vertretungsplan
+  </title>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="0" http-equiv="expires"/>
+  <link href="style.css" rel="stylesheet"/>
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js">
+  </script>
+  <!-- Include DataTables -->
+  <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js">
+  </script>
+  <!-- Include Scroller -->
+  <link href="https://cdn.datatables.net/scroller/2.0.3/css/scroller.dataTables.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.datatables.net/scroller/2.0.3/js/dataTables.scroller.min.js">
+  </script>
+ </head>
+ <body>
+  <p>
+   Nachricht des Tages: 2024-05-28 ------
+  </p>
+  <div>
+   <table id="scroll-table">
+    <thead>
+     <tr>
+      <th>
+      </th>
+      <th>
+       1
+      </th>
+      <th>
+       2
+      </th>
+      <th>
+       3
+      </th>
+      <th>
+       4
+      </th>
+      <th>
+       5
+      </th>
+      <th>
+       6
+      </th>
+      <th>
+       7
+      </th>
+      <th>
+       8
+      </th>
+      <th>
+       9
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <th>
+       3AF  3AF
+      </th>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          WOM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          NRA
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R1C
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       3AL  3AL
+      </th>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          WOM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          NRA
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R1C
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       3B  3BF
+      </th>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          LEI
+         </s>
+         <p class="new">
+          WEC
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          F3
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R3B
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          WOM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          NRA
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R1C
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       3D  3DR
+      </th>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          WOM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          BSPM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          TM1
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       3E  3ER
+      </th>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          WOM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          BSPM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          TM1
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          WOM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          NRA
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R1C
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       3F  3FR
+      </th>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          AMI
+         </s>
+         <p class="new">
+          TIM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          MU_4A
+         </s>
+         <p class="new">
+          M
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R3F
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          WOM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          NRA
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R1C
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       4E  4ER
+      </th>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          PAP
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          BSPM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          TM1
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       4F  4FR
+      </th>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          PAP
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          BSPM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          TM1
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="ausfall">
+       <div>
+        <s class="old">
+         MU_4A
+        </s>
+        <s class="old">
+         AMI
+        </s>
+        <s class="old">
+         9
+        </s>
+       </div>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       5A  5AL
+      </th>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          TIM
+         </s>
+         <p class="new">
+          SUB
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          M
+         </s>
+         <p class="new">
+          L3
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R5A
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       5B  5BF
+      </th>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          HEG
+         </s>
+         <p class="new">
+          WEC
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          L5
+         </s>
+         <p class="new">
+          M
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R5B
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       5C  5CR
+      </th>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          KRI
+         </s>
+         <p class="new">
+          POC
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          M
+         </s>
+         <p class="new">
+          E
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R5C
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       6A  6AL
+      </th>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          WMA
+         </s>
+         <p class="new">
+          SLI
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          M
+         </s>
+         <p class="new">
+          BIOUB_3
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R6A
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       6B  6BF
+      </th>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          GMG
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          BSPM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          TM1
+         </p>
+        </div>
+       </div>
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <p class="new">
+          POM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          BSPK
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          TK1
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          GMG
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          BSPM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          TM1
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       6C  6CR
+      </th>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          MAB
+         </s>
+         <p class="new">
+          HLE
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          BSPM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R6C
+         </p>
+        </div>
+       </div>
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <p class="new">
+          POM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          BSPK
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          TK1
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr>
+      <th>
+       7C  7CR
+      </th>
+      <td class="leer">
+      </td>
+      <td class="supplieren">
+       <div class="supplieren-container">
+        <div class="supplieren-item">
+         <s class="old">
+          SUB
+         </s>
+         <p class="new">
+          HUB
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          L5
+         </s>
+         <p class="new">
+          D
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R7C
+         </p>
+        </div>
+       </div>
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+      <td class="leer">
+      </td>
+     </tr>
+     <tr class="extra">
+      <th>
+       WLPFF
+      </th>
+      <td class="leer" colspan="9">
+       <div>
+        <div>
+         2A  2A (Stunde 6)
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          MAL
+         </s>
+         <p class="new">
+          WOM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          WINF
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          TM1
+         </p>
+        </div>
+       </div>
+       <div>
+        <div>
+         6D  6DR (Stunde 1)
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          KOR
+         </s>
+         <p class="new">
+          MUM
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          WPUP
+         </s>
+         <p class="new">
+          D
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R6D
+         </p>
+        </div>
+       </div>
+      </td>
+     </tr>
+     <tr class="extra">
+      <th>
+       UÜ
+      </th>
+      <td class="leer" colspan="9">
+       <div>
+        <div>
+         6C  6CR (Stunde 3)
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          MAB
+         </s>
+         <p class="new">
+          QUI
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <s class="old">
+          CHOR
+         </s>
+         <p class="new">
+          KUNSTG_4A
+         </p>
+        </div>
+        <div class="supplieren-item">
+         <p class="new">
+          R6C
+         </p>
+        </div>
+       </div>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <script src="script.js">
+  </script>
+ </body>
 </html>
