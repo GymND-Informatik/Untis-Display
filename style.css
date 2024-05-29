@@ -74,7 +74,7 @@ td {
 /*  border: 1px solid #404040;*/
   padding: 12px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   /*background-color: var(--eventBackground-light);*/
   background-color: #1d1e20;;
 }
@@ -83,7 +83,7 @@ td {
 th {
   background: var(--table-head-light);
   color: var(--text-light);
-  font-size: 18px;
+  font-size: 20px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }
@@ -94,7 +94,7 @@ th {
 
 .supplieren {
   /*color: var(--text-light);*/
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   background-color: rgba(142, 186, 125, 0.54);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -122,11 +122,10 @@ th {
 }
 
 .error {
-
 }
 
 p {
-  font-size: 18px;
+  font-size: 20px;
   color: var(--text-light);
   margin-top: 0;
 }
@@ -137,7 +136,7 @@ table {
 
 s {
   padding-right: 20px;
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 0;
 }
 

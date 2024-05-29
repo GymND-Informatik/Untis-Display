@@ -7,7 +7,7 @@ $(document).ready(function() {
     table.append(divider);
 
     var scrollSpeed = 0.5;
-    var scrollInterval = 30;
+    var scrollInterval = 35;
 
     setInterval(function () {
         var scrollTop = table.scrollTop();
