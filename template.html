@@ -14,11 +14,16 @@
     <p class="message">Nachricht des Tages: </p>
     <p class="message" id="date-time"></p>
   </div>
-  <div class="main-div"><script src="script.js"></script>
+  <div class="main-div">
+    <script src="script.js"></script>
     <script src="jquery-3.5.1.js"></script>
     <script src="jquery.dataTables.min.js"></script>
-    <script src="dataTables.scroller.min.js"></script></div>
-
+    <script src="dataTables.scroller.min.js"></script>
+  </div>
+  <script src="script.js"></script>
+  <script src="jquery-3.5.1.js"></script>
+  <script src="jquery.dataTables.min.js"></script>
+  <script src="dataTables.scroller.min.js"></script>
   <!--  script for the clock -->
   <script>
     // Display current date and time
@@ -28,7 +33,6 @@
       const dateTimeString = now.toLocaleDateString('de-DE', options);
       document.getElementById('date-time').innerText = dateTimeString;
     }
-
     displayDateTime(); // Initial display
     setInterval(displayDateTime, 1000); // Update every second
   </script>
