@@ -6,8 +6,8 @@ $(document).ready(function() {
     table.append(clonedTableBody);
     table.append(divider);
 
-    var scrollSpeed = 0.5;
-    var scrollInterval = 35;
+    var scrollSpeed = 1;
+    var scrollInterval = 65;
 
     setInterval(function () {
         var scrollTop = table.scrollTop();

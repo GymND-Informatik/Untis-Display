@@ -90,6 +90,7 @@ th {
 
 .leer {
   background-color: var(--background-light);
+  width: 10%;
 }
 
 .supplieren {
@@ -100,13 +101,15 @@ th {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(142, 186, 125, 0.43);
   z-index: -10;
-  padding: 20px;
+  padding: 20px 25px 20px 25px;
   padding-bottom: 5px;
   /*z-index: 2;*/
   /*background-color: #3c474a;*/
   font-size: 0.75rem;
   /*border-left: 3px solid #b9e5eb;*/
   /*border-radius: 10px;*/
+  width: 160px;
+  max-width: 160px;
 }
 
 .ausfall {
