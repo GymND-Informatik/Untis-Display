@@ -264,6 +264,7 @@ def write_new_html(tokens, message):
             # means the hour completely drops, give it its own class and handle accordingly
             if x[3] == "---":
               div = soup.new_tag('div')
+              div.attrs["class"] = "ausfall-div"
               for k in range(3):
                 td_tag.attrs["class"] = "ausfall"
                 s_tag = soup.new_tag("s", attrs={"class": "old"})
