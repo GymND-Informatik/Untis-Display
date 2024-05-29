@@ -1,9 +1,11 @@
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 from datetime import datetime, date
 
 wpflf = open("wpflf.txt", "r").read().split("\n")
 uu = open("uu.txt", "r").read().split("\n")
 ignore = open("ignore.txt", "r").read().split("\n")
+source_path = "/mnt/storage/external/"
+output_path = "/var/www/Untis/"
 
 def is_class(text):
   if len(text) <= 1:
@@ -54,10 +56,10 @@ def parse_html(filename):
 
   soup = BeautifulSoup(html_content, 'html.parser')
 
-  # date (don't care for now)
+  # date 
   table_mon_title = soup.find('div', class_='mon_title')
   date_text = table_mon_title.get_text().split(" ")[0]
-  if datetime.strptime(date_text, "%d.%m.%Y").date() != date(2024, 5, 7):
+  if datetime.strptime(date_text, "%d.%m.%Y").date() != date.today():
     print("Date is not today, skipping tokens.")
     return None, None
 
@@ -79,8 +81,12 @@ def parse_html(filename):
 
   for element in soup.find_all():
     # we are only interested in the table rows, they have all the info
+    
     if element.name == 'tr':
       for child in element.contents:
+        if type(child) == NavigableString:
+          continue
+        print(type(child), child)
         text = child.get_text().strip("\n").strip()
         if text == "Text":  #information begins
           mode = True
@@ -315,7 +321,7 @@ tokens = {}
 message = ""
 # tokens, message = parse_html("subst_002.htm")
 while True:
-  filename = "subst_" + str(num).zfill(3) + ".htm"
+  filename = source_path + "subst_" + str(num).zfill(3) + ".htm"
   # print("parsing", filename)
   try:
     tokens_, msg = parse_html(filename)
@@ -334,5 +340,5 @@ while True:
 # print(wpflf, uu)
 
 new_html = write_new_html(tokens, message)
-with open("index.html", "w") as file:
+with open(output_path + "index.html", "w") as file:
   file.write(new_html)
