@@ -86,7 +86,6 @@ def parse_html(filename):
       for child in element.contents:
         if type(child) == NavigableString:
           continue
-        print(type(child), child)
         text = child.get_text().strip("\n").strip()
         if text == "Text":  #information begins
           mode = True
@@ -202,10 +201,10 @@ def write_new_html(tokens, message):
   if not message:
     message = "------"
   # enter the daily message up top
-  soup.find("p").string = str(soup.find("p").get_text()) + str(date.today()) + " " + str(message)
+  soup.find("p", class_="message").string = str(soup.find("p", class_="message").get_text()) + " " + str(message)
 
   if len(tokens) == 0:
-    soup.find("p").string = str(soup.find("p").get_text()) + " | Keine Supplierungen gefunden."
+    soup.find("p", class_="message").string = str(soup.find("p", class_="message").get_text()) + " | Keine Supplierungen gefunden."
 
   # create the table body
   tbody = soup.new_tag("tbody")
@@ -265,6 +264,7 @@ def write_new_html(tokens, message):
             # means the hour completely drops, give it its own class and handle accordingly
             if x[3] == "---":
               div = soup.new_tag('div')
+              div.attrs["class"] = "ausfall-div"
               for k in range(3):
                 td_tag.attrs["class"] = "ausfall"
                 s_tag = soup.new_tag("s", attrs={"class": "old"})
@@ -311,7 +311,7 @@ def write_new_html(tokens, message):
 
   # append the whole table body to the table and the table to the div
   table.append(tbody)
-  soup.find("div").append(table)
+  soup.find("div", class_="main-div").append(table)
 
   # print(wpflf_list, uu_list)
   return soup.prettify()
