@@ -29,7 +29,7 @@ $(document).ready(function() {
     function FilipStupid() {
         table.animate({
             scrollTop: table.height() * (counter++)
-        }, 30000, 'linear', () => {
+        }, 40000, 'linear', () => {
             var newClonedBody = originalTableBody.clone();
             var newDivider = divider.clone();
             table.append(newClonedBody);
