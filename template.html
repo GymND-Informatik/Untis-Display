@@ -10,12 +10,27 @@
   <link rel="stylesheet" type="text/css" href="scroller.dataTables.min.css">
 </head>
 <body>
-  <p>Nachricht des Tages: <br></p>
-  <div></div>
+  <div class="message-div">
+    <p class="message">Nachricht des Tages: </p>
+    <p class="message" id="date-time"></p>
+  </div>
+  <div class="main-div"></div>
   <script src="script.js"></script>
   <script src="jquery-3.5.1.js"></script>
   <script src="jquery.dataTables.min.js"></script>
   <script src="dataTables.scroller.min.js"></script>
+  <!--  script for the clock -->
+  <script>
+    // Display current date and time
+    function displayDateTime() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      const dateTimeString = now.toLocaleDateString('de-DE', options);
+      document.getElementById('date-time').innerText = dateTimeString;
+    }
 
+    displayDateTime(); // Initial display
+    setInterval(displayDateTime, 1000); // Update every second
+  </script>
 </body>
 </html>
