@@ -156,6 +156,17 @@ def simplify_range(input_string):
 
 def display_extra(soup, list, name):
   # rearrange extras
+  new_list = {}
+  for key, value in list.items():
+    for v in value:
+      val = [v[2], v[1], v[0]]
+      key_new = val[0]+" "+val[1]
+      if key_new not in new_list:
+        new_list[key_new] = val
+        new_list[key_new].append(key)
+      else:
+        new_list[key_new].append(key)
+  list = new_list
   if len(list):
     new_row = soup.new_tag('tr')
     new_row.attrs["class"] = "extra"
@@ -166,21 +177,18 @@ def display_extra(soup, list, name):
     td_tag.attrs["class"] = "leer"
     td_tag.attrs["colspan"] = 9
     for key, item in list.items():
+      div = soup.new_tag('div')
+      div.attrs["class"] = "extra-container"
+      div2 = soup.new_tag('div')
+      div2.attrs["class"] = "extra-item"
+      div2.string = key.split(" ")[0] + " (Stunde " + (simplify_range(item[2]) if "," in item[2] else item[2]) + ")"
+      div.append(div2)
       for x in item:
-        div = soup.new_tag('div')
-        div.attrs["class"] = "extra-container"
-        div2 = soup.new_tag('div')
-        div2.attrs["class"] = "extra-item"
-        div2.string = key + " (Stunde " + (simplify_range(x[0]) if "," in x[0] else x[0]) + ")"
-        div.append(div2)
-        div.append(format_text(soup, x[1], extra=True))
-        div.append(format_text(soup, x[2], extra=True))
-        div.append(format_text(soup, x[3], extra=True))
-        td_tag.append(div)
-
+        print(x)
+        div.append(format_text(soup, x, extra=True))
+      td_tag.append(div)
     new_row.append(td_tag)
     return new_row
-
 
 def write_new_html(tokens, message):
   # open the html template and find the table
@@ -268,7 +276,7 @@ def write_new_html(tokens, message):
               for k in range(3):
                 td_tag.attrs["class"] = "ausfall"
                 s_tag = soup.new_tag("s", attrs={"class": "old"})
-                s_tag.string = x[2 - k]
+                s_tag.string = x[k]
                 div.append(s_tag)
               td_tag.append(div)
 
