@@ -44,3 +44,17 @@ $(document).ready(function() {
 
 });
 
+function isPositionStickySupported() {
+    var testElement = document.createElement('div');
+    testElement.style.position = 'sticky';
+    return testElement.style.position === 'sticky';
+}
+
+if (isPositionStickySupported()) {
+    console.log('position: sticky is supported');
+    // Add a class or perform some action
+} else {
+    console.log('position: sticky is not supported');
+    // Fallback or other actions
+}
+
