@@ -5,11 +5,11 @@
   </title>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <meta content="0" http-equiv="expires"/>
-  <meta content="360" http-equiv="refresh"/>
+  <meta content="30" http-equiv="refresh"/>
   <link href="style.css" rel="stylesheet"/>
   <!-- Include jQuery -->
-  <link rel="stylesheet" type="text/css" href="jquery.dataTables.min.css">
-  <link rel="stylesheet" type="text/css" href="scroller.dataTables.min.css">
+  <link href="jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+  <link href="scroller.dataTables.min.css" rel="stylesheet" type="text/css"/>
  </head>
  <body>
   <div class="message-div">
@@ -20,10 +20,14 @@
    </p>
   </div>
   <div class="main-div">
-   <script src="script.js"></script>
-   <script src="jquery-3.5.1.js"></script>
-   <script src="jquery.dataTables.min.js"></script>
-   <script src="dataTables.scroller.min.js"></script>
+   <script src="script.js">
+   </script>
+   <script src="jquery-3.5.1.js">
+   </script>
+   <script src="jquery.dataTables.min.js">
+   </script>
+   <script src="dataTables.scroller.min.js">
+   </script>
    <table id="scroll-table">
     <thead>
      <tr>
@@ -466,13 +470,13 @@
       <td class="ausfall">
        <div class="ausfall-div">
         <s class="old">
-         MU_4A
+         9
         </s>
         <s class="old">
          AMI
         </s>
         <s class="old">
-         9
+         MU_4A
         </s>
        </div>
       </td>
@@ -854,7 +858,12 @@
       <td class="leer" colspan="9">
        <div class="extra-container">
         <div class="extra-item">
-         2A  2A (Stunde 6)
+         WINF (Stunde 6)
+        </div>
+        <div class="extra-item">
+         <p class="new">
+          WINF
+         </p>
         </div>
         <div class="extra-item">
          <s class="old">
@@ -866,26 +875,28 @@
         </div>
         <div class="extra-item">
          <p class="new">
-          WINF
+          6
          </p>
         </div>
         <div class="extra-item">
          <p class="new">
-          TM1
+          2A  2A
+         </p>
+        </div>
+        <div class="extra-item">
+         <p class="new">
+          2B  2B
+         </p>
+        </div>
+        <div class="extra-item">
+         <p class="new">
+          2C  2C
          </p>
         </div>
        </div>
        <div class="extra-container">
         <div class="extra-item">
-         6D  6DR (Stunde 1)
-        </div>
-        <div class="extra-item">
-         <s class="old">
-          KOR
-         </s>
-         <p class="new">
-          MUM
-         </p>
+         WPUP?D (Stunde 1)
         </div>
         <div class="extra-item">
          <s class="old">
@@ -896,8 +907,21 @@
          </p>
         </div>
         <div class="extra-item">
+         <s class="old">
+          KOR
+         </s>
          <p class="new">
-          R6D
+          MUM
+         </p>
+        </div>
+        <div class="extra-item">
+         <p class="new">
+          1
+         </p>
+        </div>
+        <div class="extra-item">
+         <p class="new">
+          6D  6DR
          </p>
         </div>
        </div>
@@ -910,15 +934,7 @@
       <td class="leer" colspan="9">
        <div class="extra-container">
         <div class="extra-item">
-         6C  6CR (Stunde 3)
-        </div>
-        <div class="extra-item">
-         <s class="old">
-          MAB
-         </s>
-         <p class="new">
-          QUI
-         </p>
+         CHOR?KUNSTG_4A (Stunde 3)
         </div>
         <div class="extra-item">
          <s class="old">
@@ -929,8 +945,21 @@
          </p>
         </div>
         <div class="extra-item">
+         <s class="old">
+          MAB
+         </s>
          <p class="new">
-          R6C
+          QUI
+         </p>
+        </div>
+        <div class="extra-item">
+         <p class="new">
+          3
+         </p>
+        </div>
+        <div class="extra-item">
+         <p class="new">
+          6C  6CR
          </p>
         </div>
        </div>
@@ -939,14 +968,6 @@
     </tbody>
    </table>
   </div>
-  <script src="script.js">
-  </script>
-  <script src="jquery-3.5.1.js">
-  </script>
-  <script src="jquery.dataTables.min.js">
-  </script>
-  <script src="dataTables.scroller.min.js">
-  </script>
   <!--  script for the clock -->
   <script>
    // Display current date and time
