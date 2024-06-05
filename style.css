@@ -90,7 +90,7 @@ th {
 
 .leer {
   background-color: var(--background-light);
-  width: 10%;
+  width: 200px;
 }
 
 .supplieren {
@@ -108,8 +108,7 @@ th {
   font-size: 0.75rem;
   /*border-left: 3px solid #b9e5eb;*/
   /*border-radius: 10px;*/
-  width: 170px;
-  max-width: 170px;
+  width: 200px;
 }
 
 .ausfall {
@@ -145,7 +144,6 @@ s {
 
 #scroll-table {
   height: 100vh;
-  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling in iOS */
   overflow: auto;
   scrollbar-width: none; /* Firefox */
   display: block;
@@ -157,6 +155,7 @@ s {
 }
 
 #scroll-table thead {
+
   position: sticky;
   top: 0;
   background: white; /* or any other color */
