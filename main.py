@@ -1,9 +1,10 @@
 from bs4 import BeautifulSoup, NavigableString
 from datetime import datetime, date
 
-wpflf = open("wpflf.txt", "r").read().split("\n")
-uu = open("uu.txt", "r").read().split("\n")
-ignore = open("ignore.txt", "r").read().split("\n")
+program_directory = ""
+wpflf = open(program_directory + "wpflf.txt", "r").read().split("\n")
+uu = open(program_directory + "uu.txt", "r").read().split("\n")
+ignore = open(program_directory + "ignore.txt", "r").read().split("\n")
 source_path = "/mnt/storage/external/"
 output_path = "/var/www/Untis/"
 
