@@ -1,60 +1,50 @@
-$(document).ready(function() {
-    var table = $('#scroll-table');
-    var originalTableBody = table.find('tbody').first();
-    var clonedTableBody = originalTableBody.clone();
-    var divider = $('<div class="divider"></div>');
-    table.append(clonedTableBody);
-    table.append(divider);
-
-    var scrollSpeed = 1;
-    var scrollInterval = 65;
-    //
-    // setInterval(function () {
-    //     var scrollTop = table.scrollTop();
-    //     var scrollHeight = table.prop('scrollHeight');
-    //     var visibleHeight = table.height();
-    //
-    //     // Check if the scroll has reached near the end of the cloned table body
-    //     if (scrollTop + visibleHeight >= scrollHeight - 20) {
-            var newClonedBody = originalTableBody.clone();
-            var newDivider = divider.clone();
-            table.append(newClonedBody);
-            table.append(newDivider);
-    //     }
-    //
-    //     table.animate()
-    //
-    // }, scrollInterval);
-    let counter = 1;
-    function FilipStupid() {
-        table.animate({
-            scrollTop: table.height() * (counter++)
-        }, 40000, 'linear', () => {
-            var newClonedBody = originalTableBody.clone();
-            var newDivider = divider.clone();
-            table.append(newClonedBody);
-            table.append(newDivider);
-            console.log("added new element")
-        });
-        FilipStupid();
-
+document.addEventListener('DOMContentLoaded', function() {
+    
+    function isPositionStickySupported() {
+        var testElement = document.createElement('div');
+        testElement.style.position = 'sticky';
+        return testElement.style.position === 'sticky';
     }
-    FilipStupid();
+    
+    if (isPositionStickySupported()) {
+        console.log('position: sticky is supported');
+        // Add a class or perform some action
+    } else {
+        console.log('position: sticky is not supported');
+        // Fallback or other actions
+    }
 
+    var table = document.getElementById('scroll-table');
+    var originalTableBody = table.querySelector('tbody');
+    var divider = document.createElement('div');
+    divider.className = 'divider';
+    
+    function _scroll() {
+        // Determine the height of the first cell in the table header
+        var rect = table.querySelector('thead tr').children[0].getBoundingClientRect();
+        var topElement = document.elementFromPoint(rect.left + 1, rect.bottom + 1);
+        var scrollAmount = topElement.getBoundingClientRect();
+        var backupScrollTop = table.scrollTop;
+        table.scrollTop += scrollAmount.height;
 
+        // console.log(scrollAmount.height);
+        // Check if the table has reached the bottom
+        if (table.scrollTop >= table.scrollHeight - table.clientHeight) {
+            table.scrollTop = backupScrollTop;
+            // Clone the original table body and append it to the table
+            var newClonedBody = originalTableBody.cloneNode(true);
+            table.appendChild(newClonedBody);
+        }
+    }
+
+    function startScroll() {
+        _scroll(); // Initial scroll
+        setInterval(_scroll, 5000); // Set interval for periodic scrolling
+    }
+
+    // Call startScroll() to initiate scrolling
+    startScroll();
 });
 
-function isPositionStickySupported() {
-    var testElement = document.createElement('div');
-    testElement.style.position = 'sticky';
-    return testElement.style.position === 'sticky';
-}
 
-if (isPositionStickySupported()) {
-    console.log('position: sticky is supported');
-    // Add a class or perform some action
-} else {
-    console.log('position: sticky is not supported');
-    // Fallback or other actions
-}
 
