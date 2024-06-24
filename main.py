@@ -193,7 +193,7 @@ def display_extra(soup, list, name):
 
 def write_new_html(tokens, message):
   # open the html template and find the table
-  file = open("template.html", 'r')
+  file = open(program_directory + "template.html", 'r')
   soup = BeautifulSoup(file.read(), 'html.parser')
   table = soup.new_tag("table", id="scroll-table")
 
